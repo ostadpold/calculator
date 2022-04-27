@@ -4,7 +4,7 @@
    --black:#0E0E10;
    --white:rgba(255, 255, 255, 0.9);
    --whitegray:rgba(255, 255, 255, 0.65);
-   --orange:rgb(255, 178, 34);
+   --orange:rgb(233, 151, 0);
 }
 * {
    padding: 0;
@@ -93,8 +93,9 @@ body {
    justify-content: center;
    align-items: center;
    width:70px;
-   height: 60px;
+   height: 70px;
    cursor: pointer;
+   margin-top: 10px;
 }
 .hidden-arguments .line button i 
 {
@@ -138,6 +139,7 @@ body {
    justify-content: center;
    align-items: center;
    width:70px;
+   height: 70px;
    cursor: pointer;
 }
 .container-arguments .line button i
@@ -160,4 +162,21 @@ body {
 {
    background-color: var(--orange);
    border-radius: 20px;
+}
+@media screen and (max-width:420px){
+   body {
+      justify-content: flex-end;
+   }
+   .container-arguments .line button i
+   {
+   font-size: 3.5em;
+   }
+   .container-display input
+   {
+   padding: 8px 8px;
+   }
+   .container-arguments
+   {
+   gap:18px;
+   }
 }

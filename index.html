@@ -16,7 +16,7 @@
          <div class="line">
             <button><i class="option">X<sup>y</sup></i></button>
             <button >
-               <i class="option">&radic;X</i>
+               <i class="option">&radic;x</i>
             </button>
             <button><i class="option">&pi;</i></button>
             <button><i class="option">(</i></button>
@@ -28,13 +28,13 @@
             <button onclick="clearDisplay()"><i class="fa-solid fa-c argument"></i></button>
             <button onclick="DeleteDisplay()"><i class="fa-solid fa-delete-left argument "></i></button>
             <button onclick="percentDisplay()"><i class="fa-solid fa-percent argument "></i></button>
-            <button class="operator different" onclick="operator(event)"><i class="fa-solid fa-divide argument"></i></button>
+            <button data-display="&#247;" class="operator different" onclick="operator(event)"><i class="fa-solid fa-divide argument"></i></button>
          </div>
          <div class="line">
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">7</i></button>
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">8</i></button>
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">9</i></button>
-            <button class="operator different" onclick="operator(event)"><i class="fa-solid fa-xmark argument "></i></button>
+            <button data-display="&#215;" class="operator different" onclick="operator(event)"><i class="fa-solid fa-xmark argument "></i></button>
          </div>
          <div class="line">
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">4</i></button>
