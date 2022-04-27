@@ -179,4 +179,8 @@ body {
    {
    gap:18px;
    }
+   .container-arguments .line.first
+   {
+      margin-bottom: 20px;
+   }
 }
