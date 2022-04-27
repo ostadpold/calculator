@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+:root
+{
+   --black:#0E0E10;
+   --white:rgba(255, 255, 255, 0.9);
+   --whitegray:rgba(255, 255, 255, 0.65);
+   --orange:rgb(255, 178, 34);
+}
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   height: 100vh;
+   font-family: 'Jost', sans-serif;
+   background-color: var(--black);
+}
+.container-display
+{
+   max-width: 400px;
+   width: 100%;
+   height: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 5px;
+}
+.container-display input
+{
+   width: 100%;
+   padding: 8px 1px;
+   border: none;
+   background-color: var(--black);
+   cursor:auto;
+   font-family: 'Jost', sans-serif;
+   color:var(--white);
+   font-size: 3.25em;
+}
+.container-display input:focus
+{
+   border: none;
+   outline: none;
+}
+.breakline
+{
+   max-width: 400px;
+   width:100%;border: 2px solid var(--white);
+   background-color: var(--white);
+   border-radius: 50px;
+}
+.container
+{
+   max-width: 400px;
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+}
+.hidden-arguments
+{
+   width: 20%;
+   height: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   display: none;
+   opacity: 0;
+}
+.hidden-arguments.active
+{
+   display: block;
+   opacity: 1;
+}
+
+.hidden-arguments .line
+{
+   width:100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+.hidden-arguments .line button 
+{
+   background-color: var(--black);
+   border: none;outline: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width:70px;
+   height: 60px;
+   cursor: pointer;
+}
+.hidden-arguments .line button i 
+{
+   color:var(--white);
+   font-size: 3.25em;
+   pointer-events: none;
+}
+.hidden-arguments .line button i.option
+{
+   font-style: normal;
+   font-family: 'Jost', sans-serif;
+   color:var(--whitegray);
+}
+
+.container-arguments
+{
+   width: 100%;
+   height: auto;
+   display: flex;
+   flex-direction: column;
+   gap:14px;
+}
+.container-arguments.active {
+   width:80%;
+}
+.container-arguments .line
+{
+   display: flex;
+   flex-direction:row;
+   justify-content: space-around;
+}
+.container-arguments .line.first
+{
+   margin-top: 20px;
+}
+.container-arguments .line button 
+{
+   background-color: var(--black);
+   border: none;outline: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width:70px;
+   cursor: pointer;
+}
+.container-arguments .line button i
+{
+   color:var(--white);
+   font-size: 3.25em;
+   pointer-events: none;
+}
+.container-arguments .line button i.number
+{
+   font-style: normal;
+   font-family: 'Jost', sans-serif;
+   color:var(--white);
+}
+.container-arguments .line button i.argument 
+{
+   color:var(--orange);
+}
+.container-arguments .line button.argument-equal
+{
+   background-color: var(--orange);
+   border-radius: 20px;
+}
