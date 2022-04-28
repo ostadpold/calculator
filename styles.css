@@ -1,10 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
-:root
+:root {
+   --orange:rgb(255, 166, 0);
+}
+html:root
 {
    --black:#0E0E10;
    --white:rgba(255, 255, 255, 0.9);
    --whitegray:rgba(255, 255, 255, 0.65);
-   --orange:rgb(233, 151, 0);
+   --gray:rgba(128, 128, 128, 0.8);
+   /* filter:invert(1) hue-rotate(160deg); */
+}
+html.active:root
+{
+   --black:#0E0E10;
+   --white:rgba(255, 255, 255, 0.9);
+   --whitegray:rgba(255, 255, 255, 0.65);
+   --gray:rgba(128, 128, 128, 0.8);
+   filter:invert(1) hue-rotate(160deg);
+}
+html
+{
+   transition: all 100ms ease;
 }
 * {
    padding: 0;
@@ -19,6 +35,87 @@ body {
    height: 100vh;
    font-family: 'Jost', sans-serif;
    background-color: var(--black);
+}
+.todes
+{
+   position: absolute;
+   top:10px;
+   right: 10px;
+   /* border: 1px solid red; */
+   max-width: 90px;
+   width:100%;
+   height: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+.todes .box
+{
+   width: 100%;
+   height: auto;
+   position: relative;
+   /* pointer-events: none; */
+   /* border: 1px solid pink; */
+}
+.todes .box :is(input,span)
+{
+   color:var(--white);
+   font-size: 2em;
+}
+.todes .box input
+{
+   appearance: none;
+   width: 100%;
+   background-color: var(--gray);
+   height: 40px;
+   cursor: pointer;
+   border-radius: 10px;
+}
+.todes .box span
+{
+   position: absolute;
+   left:0;
+   top:0;
+   pointer-events: none;
+   transition: all 500ms ease;
+}
+.todes .box span i 
+{
+   position: absolute;
+   left:4px;
+   top:4px;
+}
+.todes .box span i:first-child
+{
+   visibility: visible;
+   opacity: 1;
+   transform: rotate();
+   transition: all 1000ms ease;
+}
+.todes .box span i:last-child
+{
+   visibility: hidden;
+   opacity: 0;
+   transform: rotate();
+   transition: all 1000ms ease;
+}
+.todes .box input:checked + span
+{
+   top:0;
+   left:50px;
+}
+.todes .box input:checked + span i:first-child
+{
+   visibility: hidden;
+   opacity: 0;
+   transform: rotate(45deg);
+}
+.todes .box input:checked + span i:last-child
+{
+   visibility: visible;
+   opacity: 1;
+   transform: rotate(-45deg);
 }
 .container-display
 {
@@ -45,6 +142,10 @@ body {
 {
    border: none;
    outline: none;
+}
+.container-display input::placeholder
+{
+   color:var(--white);
 }
 .breakline
 {

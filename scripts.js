@@ -7,8 +7,14 @@ let myNumbersvalue;
 let operators = document.querySelectorAll('.operator');
 let differntoperators = document.querySelectorAll('.different');
 let mycalculation = "";
-
+let mybox = document.querySelector('.box');
+let HTML = document.querySelector('html');
 myDisplay.setAttribute("value","");
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+   // const newColorScheme = event.matches ? "dark" : "light";
+   alert(12);
+});
 
 for(let i = 0;i <4;i++){
    let operatorsvalue = ["/","*","-","+"];//for operators
@@ -20,7 +26,9 @@ for(let i = 0;i <= 10;i++){//for numbers value
 }
 function togglehiddenline(){
    myHiddenline.classList.toggle("active");
-   myLine.classList.toggle('active');
+}
+function togglebox(){
+   HTML.classList.toggle("active");
 }
 function Numbers(event){
    let value = event.target.value;
