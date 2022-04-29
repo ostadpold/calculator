@@ -8,6 +8,7 @@
 </head>
 <body>
    <div class="todes">
+      <div onclick="clickedtoggle()" class="boxdisplay"><i class="fa-solid fa-ellipsis-vertical"></i></div>
       <div onclick="togglebox()" class="box">
          <input type="checkbox">
          <span>
@@ -18,6 +19,7 @@
    </div>
    <div class="container-display">
       <input type="text" placeholder='0' readonly>
+      <input type="text" value="" readonly>
    </div>
    <hr class="breakline">
    <div class="container">
@@ -35,25 +37,25 @@
             <button onclick="clearDisplay()"><i class="fa-solid fa-c argument"></i></button>
             <button onclick="DeleteDisplay()"><i class="fa-solid fa-delete-left argument "></i></button>
             <button onclick="percentDisplay()"><i class="fa-solid fa-percent argument "></i></button>
-            <button data-display="&#247;" class="operator different" onclick="operator(event)"><i class="fa-solid fa-divide argument"></i></button>
+            <button data-display="&#247;" class="operator" onclick="operator(event)"><i class="fa-solid fa-divide argument"></i></button>
          </div>
          <div class="line">
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">7</i></button>
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">8</i></button>
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">9</i></button>
-            <button data-display="&#215;" class="operator different" onclick="operator(event)"><i class="fa-solid fa-xmark argument "></i></button>
+            <button data-display="&#215;" class="operator" onclick="operator(event)"><i class="fa-solid fa-xmark argument "></i></button>
          </div>
          <div class="line">
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">4</i></button>
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">5</i></button>
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">6</i></button>
-            <button class="operator" onclick="operator(event)"><i class="fa-solid fa-minus argument "></i></button>
+            <button data-display="-" class="operator" onclick="operator(event)"><i class="fa-solid fa-minus argument "></i></button>
          </div>
          <div class="line">
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">1</i></button>
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">2</i></button>
             <button class="numbersbutton" onclick="Numbers(event)"><i class="number">3</i></button>
-            <button class="operator" onclick="operator(event)"><i class="fa-solid fa-plus argument "></i></button>
+            <button data-display="+" class="operator" onclick="operator(event)"><i class="fa-solid fa-plus argument "></i></button>
          </div>
          <div class="line last">
             <button onclick="togglehiddenline()"><i class="fa-solid fa-arrow-right-arrow-left argument "></i></button>

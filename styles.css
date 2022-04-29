@@ -55,8 +55,10 @@ body {
    width: 100%;
    height: auto;
    position: relative;
-   /* pointer-events: none; */
-   /* border: 1px solid pink; */
+   display: none;
+   opacity: 0;
+   transform: translateY(-45px) translateX(-54px);
+   transition: all 500ms ease;
 }
 .todes .box :is(input,span)
 {
@@ -66,6 +68,7 @@ body {
 .todes .box input
 {
    appearance: none;
+   -ms-progress-appearance: none;
    width: 100%;
    background-color: var(--gray);
    height: 40px;
@@ -117,6 +120,28 @@ body {
    opacity: 1;
    transform: rotate(-45deg);
 }
+.todes .boxdisplay 
+{
+   border: 1px solid red;
+   width:50%;
+   height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+}
+.todes .boxdisplay i 
+{
+   border: 1px solid blue;
+   font-size: 2em;
+   color:white;
+}
+.todes .boxdisplay.active ~ .box 
+{
+   display: block;
+   opacity: 1;
+   transition: all 500ms ease;
+}
 .container-display
 {
    max-width: 400px;
@@ -126,22 +151,46 @@ body {
    justify-content: center;
    align-items: center;
    margin-bottom: 5px;
+   flex-direction: column;
+   /* border: 1px solid red; */
 }
 .container-display input
 {
    width: 100%;
-   padding: 8px 1px;
+   padding: 1px 1px;
    border: none;
    background-color: var(--black);
    cursor:auto;
    font-family: 'Jost', sans-serif;
    color:var(--white);
    font-size: 3.25em;
+   direction: ltr;
+   /* border: 1px solid blue; */
+   transition: all 200ms ease-in-out;
+}
+.container-display input:last-child
+{
+   font-size:2em;
+   color:var(--gray);
+   display: none;
 }
 .container-display input:focus
 {
    border: none;
    outline: none;
+}
+.container-display.active input:last-child
+{
+   font-size: 3.25em;
+   color:var(--white);
+}
+.container-display.visible input:last-child
+{
+   display: block;
+}
+.container-display.active input:first-child
+{
+   font-size: 2em;
 }
 .container-display input::placeholder
 {
