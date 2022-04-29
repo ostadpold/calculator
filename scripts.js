@@ -36,7 +36,7 @@ function Numbers(event){
 
    mycalculation += value;
    myDisplay.value += value;
-   mysecondDisplay.value = eval(mycalculation);
+   mysecondDisplay.value = "= " +  eval(mycalculation);
 
    console.log(mycalculation);
    
@@ -44,7 +44,7 @@ function Numbers(event){
 function clearDisplay(){
    mycalculation = "";
    myDisplay.value = "";
-   mysecondDisplay.value = mycalculation;
+   mysecondDisplay.value = "= " +  mycalculation;
    myDivdisplay.classList.remove("active");
    myDivdisplay.classList.remove("visible");
    
@@ -53,7 +53,7 @@ function clearDisplay(){
 function DeleteDisplay(){
    mycalculation = mycalculation.slice(0,-1);
    myDisplay.value =  myDisplay.value.slice(0,-1);
-   mysecondDisplay.value = eval(mycalculation);
+   mysecondDisplay.value = "= " + eval(mycalculation);
    myDivdisplay.classList.remove("active");
    if(myDisplay.value == ""){
       myDivdisplay.classList.remove("visible");
@@ -67,7 +67,7 @@ function DeleteDisplay(){
 function percentDisplay(){
    mycalculation = mycalculation / 100;
    myDisplay.value = mycalculation;
-   mysecondDisplay.value = mycalculation;
+   mysecondDisplay.value = "= " + mycalculation;
    myDivdisplay.classList.remove("active");
 
    console.log(mycalculation);
@@ -83,7 +83,7 @@ function operator(event){
 }
 function equals(){
    mycalculation = mycalculation.toString();
-   mysecondDisplay.value = eval(mycalculation);
+   mysecondDisplay.value =  "= " + eval(mycalculation);
    myDivdisplay.classList.add("active");
 
    console.log(mycalculation);
