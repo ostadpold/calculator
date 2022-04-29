@@ -9,6 +9,8 @@ let HTML = document.querySelector('html');
 let mysecondDisplay = document.querySelector('.container-display input:last-child');
 let myDivdisplay = document.querySelector('.container-display');
 let boxdisplay = document.querySelector('.boxdisplay');
+let myTodes = document.querySelector('.todes');
+let minecontainer = document.querySelector('.container');
 let operatorsvalue = ["/","*","-","+"]
 myDisplay.setAttribute("value","");
 let myDisplaystyle = {
@@ -25,7 +27,12 @@ for(let i = 0;i <= 10;i++){//for numbers value
    myNumbersbutton[i].setAttribute("value",myNumbersvalue);
 }
 function clickedtoggle() {
-   boxdisplay.classList.toggle("active");
+   myTodes.classList.toggle("active");
+   setTimeout(function(){
+      minecontainer.addEventListener('click', function(){
+         myTodes.classList.remove("active");
+      })
+   },2000);
 }
 function togglehiddenline(){
    myHiddenline.classList.toggle("active");
@@ -118,4 +125,4 @@ function decodeHtmlCharCodes(str) {
    return str.replace(/(&#(\d+);)/g, function(match, capture, charCode) {
      return String.fromCharCode(charCode);
    });
- }
+}

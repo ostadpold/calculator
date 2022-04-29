@@ -7,13 +7,22 @@
    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+   <div onclick="clickedtoggle()" class="boxdisplay"><i class="fa-solid fa-gear"></i></div>
    <div class="todes">
-      <div onclick="clickedtoggle()" class="boxdisplay"><i class="fa-solid fa-gear"></i></div>
-      <div onclick="togglebox()" class="box">
-         <input type="checkbox">
+      <div class="detailfor"><span>Theme-Color:</span></div>
+      <div  class="box">
+         <input type="checkbox" onclick="togglebox()">
          <span>
             <i class="fa-solid fa-moon"></i>
             <i class="fa-solid fa-sun"></i>
+         </span>
+      </div>
+      <div class="detailfor margin-top"><span>Display log:</span></div>
+      <div  class="box margin-top">
+         <input type="checkbox" onclick="">
+         <span>
+            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-check"></i>
          </span>
       </div>
    </div>

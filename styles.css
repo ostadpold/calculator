@@ -8,6 +8,7 @@ html:root
    --white:rgba(255, 255, 255, 0.9);
    --whitegray:rgba(255, 255, 255, 0.65);
    --gray:rgba(128, 128, 128, 0.8);
+   --background:rgb(125, 125, 125);
    /* filter:invert(1) hue-rotate(160deg); */
 }
 html.active:root
@@ -15,7 +16,7 @@ html.active:root
    --black:#0E0E10;
    --white:rgba(255, 255, 255, 0.9);
    --whitegray:rgba(255, 255, 255, 0.65);
-   --gray:rgba(128, 128, 128, 0.8);
+   --gray:rgba(62, 62, 62, 0.8);
    filter:invert(1) hue-rotate(160deg);
 }
 html
@@ -39,74 +40,110 @@ body {
 .todes
 {
    position: absolute;
-   top:10px;
-   right: 10px;
-   /* border: 1px solid red; */
-   max-width: 90px;
+   top:5px;
+   max-width: 400px;
    width:100%;
    height: auto;
    display: flex;
-   justify-content: center;
+   /* justify-content: space-around; */
    align-items: center;
-   flex-direction: column;
+   flex-direction: row;
+   flex-wrap: wrap;
+   visibility: hidden;
+   opacity: 0;
+   transition: all 400ms ease;
+   background-color: var(--gray);
+   backdrop-filter: blur(4px);
+   -webkit-backdrop-filter: blur(4px);
+   border-radius: 4px;
+   /* border: 1px solid red; */
+}
+.todes.active 
+{
+   visibility: visible;
+   opacity: 1;
+}
+.margin-top
+{
+   margin-top: 10px;
+}
+.todes .detailfor
+{
+   color:white;
+   font-size: 1.25em;
+   height: 50px;
+   width:50%;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   /* border: 1px solid red; */
+
 }
 .todes .box
 {
-   width: 100%;
-   height: auto;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   width: 50%;
+   height: 50px;
    position: relative;
-   display: none;
-   opacity: 0;
-   transform:translateX(-30px);
-   transition: all 500ms ease;
+   /* border: 1px solid rgb(0, 136, 255); */
 }
 .todes .box :is(input,span)
 {
    color:var(--white);
-   font-size: 2em;
+   font-size: 2.75em;
 }
 .todes .box input
 {
    appearance: none;
    -ms-progress-appearance: none;
-   width: 100%;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   width: 50%;
    background-color: var(--gray);
-   height: 40px;
+   height: 50px;
    cursor: pointer;
    border-radius: 10px;
 }
 .todes .box span
 {
    position: absolute;
-   left:0;
-   top:0;
+   left:51%;
+   top:2px;
    pointer-events: none;
    transition: all 500ms ease;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   /* border: 1px solid brown; */
+   height: 50px;
+   width:25%;
 }
 .todes .box span i 
 {
    position: absolute;
-   left:4px;
-   top:4px;
+   left:0;
+   top:0;
 }
 .todes .box span i:first-child
 {
    visibility: visible;
    opacity: 1;
    transform: rotate();
-   transition: all 1000ms ease;
+   transition: all 750ms ease;
 }
 .todes .box span i:last-child
 {
    visibility: hidden;
    opacity: 0;
    transform: rotate();
-   transition: all 1000ms ease;
+   transition: all 750ms ease;
 }
 .todes .box input:checked + span
 {
-   top:0;
-   left:50px;
+   top:2px;
+   left:75%;
 }
 .todes .box input:checked + span i:first-child
 {
@@ -120,27 +157,29 @@ body {
    opacity: 1;
    transform: rotate(-45deg);
 }
-.todes .boxdisplay 
+.boxdisplay 
 {
    /* border: 1px solid red; */
-   width:50%;
-   height: 50px;
+   position: absolute;
+   top:5px;right:5px;
+   max-width:60px;
+   width:100%;
+   height: 60px;
    display: flex;
    justify-content: center;
    align-items: center;
    cursor: pointer;
 }
-.todes .boxdisplay i 
+.boxdisplay i 
 {
    /* border: 1px solid blue; */
-   font-size: 2em;
+   font-size: 2.5em;
    color:white;
+   transition: all 200ms ease;
 }
-.todes .boxdisplay.active ~ .box 
+.boxdisplay i:hover
 {
-   display: block;
-   opacity: 1;
-   transition: all 500ms ease;
+   transform: rotate(45deg);
 }
 .container-display
 {
