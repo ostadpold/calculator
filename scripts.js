@@ -9,7 +9,7 @@ let HTML = document.querySelector('html');
 let mysecondDisplay = document.querySelector('.container-display input:last-child');
 let myDivdisplay = document.querySelector('.container-display');
 let boxdisplay = document.querySelector('.boxdisplay');
-
+let operatorsvalue = ["/","*","-","+"]
 myDisplay.setAttribute("value","");
 
 for(let i = 0;i <4;i++){
@@ -74,12 +74,21 @@ function percentDisplay(){
    
 }
 function operator(event){
+   let lastletter = mycalculation.charAt(mycalculation.length -1);
+   let lastletterDisplay = myDisplay.value.charAt(myDisplay.value.length -1);
+   myDivdisplay.classList.remove("active");
+
+   for(let i = 0;i <4; i++){
+         if(lastletter == operatorsvalue[i]){
+            mycalculation =  mycalculation.replace(lastletter,event.target.value);
+            myDisplay.value = myDisplay.value.replace(lastletterDisplay,event.target.attributes[0].value);
+            return;
+         }
+      }
    mycalculation += event.target.value;
    myDisplay.value += event.target.attributes[0].value;
-   myDivdisplay.classList.remove("active");
    
    console.log(mycalculation);
-   
 }
 function equals(){
    mycalculation = mycalculation.toString();
