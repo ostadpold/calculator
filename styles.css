@@ -122,7 +122,7 @@ body {
 }
 .todes .boxdisplay 
 {
-   border: 1px solid red;
+   /* border: 1px solid red; */
    width:50%;
    height: 50px;
    display: flex;
@@ -132,7 +132,7 @@ body {
 }
 .todes .boxdisplay i 
 {
-   border: 1px solid blue;
+   /* border: 1px solid blue; */
    font-size: 2em;
    color:white;
 }
