@@ -11,6 +11,10 @@ let myDivdisplay = document.querySelector('.container-display');
 let boxdisplay = document.querySelector('.boxdisplay');
 let operatorsvalue = ["/","*","-","+"]
 myDisplay.setAttribute("value","");
+let myDisplaystyle = {
+   189 : '-',
+   191:'&#247;',
+};
 
 for(let i = 0;i <4;i++){
    let operatorsvalue = ["/","*","-","+"];//for operators
@@ -31,20 +35,21 @@ function togglebox(){
 }
 function Numbers(event){
    let value = event.target.value;
-   myDivdisplay.classList.remove("active");
-   myDivdisplay.classList.add("visible");
 
    mycalculation += value;
    myDisplay.value += value;
-   mysecondDisplay.value = "= " +  eval(mycalculation);
+
+   seconddisplay(mycalculation);
+   myDivdisplay.classList.remove("active");
+   myDivdisplay.classList.add("visible");
 
    console.log(mycalculation);
-   
 }
 function clearDisplay(){
    mycalculation = "";
    myDisplay.value = "";
-   mysecondDisplay.value = "= " +  mycalculation;
+
+   seconddisplay(mycalculation);
    myDivdisplay.classList.remove("active");
    myDivdisplay.classList.remove("visible");
    
@@ -52,26 +57,30 @@ function clearDisplay(){
 }
 function DeleteDisplay(){
    mycalculation = mycalculation.slice(0,-1);
-   myDisplay.value =  myDisplay.value.slice(0,-1);
-   mysecondDisplay.value = "= " + eval(mycalculation);
+   myDisplay.value = myDisplay.value.slice(0,-1);
+
+   seconddisplay(mycalculation);
    myDivdisplay.classList.remove("active");
    if(myDisplay.value == ""){
       myDivdisplay.classList.remove("visible");
    }
-   if(mysecondDisplay.value == "undefined"){
-      mysecondDisplay.value = "";
+   if(mysecondDisplay.value == "= undefined"){
+      mysecondDisplay.value = mycalculation;
    }
    
    console.log(mycalculation);
 }
 function percentDisplay(){
-   mycalculation = mycalculation / 100;
-   myDisplay.value = mycalculation;
-   mysecondDisplay.value = "= " + mycalculation;
-   myDivdisplay.classList.remove("active");
+   mycalculation = mycalculation / '100' + '';
+   myDisplay.value = myDisplay.value / '100' + '';
+   if(myDisplay.value == 'NaN'){
+      myDisplay.value = mycalculation;
+   }
 
+   seconddisplay(mycalculation);
+   myDivdisplay.classList.remove("active");
+   myDivdisplay.classList.add("visible");
    console.log(mycalculation);
-   
 }
 function operator(event){
    let lastletter = mycalculation.charAt(mycalculation.length -1);
@@ -81,19 +90,32 @@ function operator(event){
    for(let i = 0;i <4; i++){
          if(lastletter == operatorsvalue[i]){
             mycalculation =  mycalculation.replace(lastletter,event.target.value);
-            myDisplay.value = myDisplay.value.replace(lastletterDisplay,event.target.attributes[0].value);
+            myDisplay.value = myDisplay.value.replace(lastletterDisplay,event.target.value);
+            myDisplay.value = myDisplay.value.replace('/',decodeHtmlCharCodes('&#247;'));
+             myDisplay.value = myDisplay.value.replace('*',decodeHtmlCharCodes('&#215;'));
             return;
          }
+     
       }
    mycalculation += event.target.value;
-   myDisplay.value += event.target.attributes[0].value;
+   myDisplay.value = mycalculation;
+   myDisplay.value = myDisplay.value.replace('/',decodeHtmlCharCodes('&#247;'));
+   myDisplay.value = myDisplay.value.replace('*',decodeHtmlCharCodes('&#215;'));
    
    console.log(mycalculation);
 }
 function equals(){
-   mycalculation = mycalculation.toString();
-   mysecondDisplay.value =  "= " + eval(mycalculation);
+   seconddisplay(mycalculation);
+   mycalculation = mysecondDisplay.value.slice(1).toString();
    myDivdisplay.classList.add("active");
 
    console.log(mycalculation);
 }
+function seconddisplay(key){
+   mysecondDisplay.value =  "= " + eval(key);
+}
+function decodeHtmlCharCodes(str) { 
+   return str.replace(/(&#(\d+);)/g, function(match, capture, charCode) {
+     return String.fromCharCode(charCode);
+   });
+ }
