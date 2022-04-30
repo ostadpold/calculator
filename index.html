@@ -7,23 +7,27 @@
    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-   <div onclick="clickedtoggle()" class="boxdisplay"><i class="fa-solid fa-gear"></i></div>
+   <div class="consolelog">
+   </div>
+   <div onclick="clickedtoggle()" class="settinglogo"><i class="fa-solid fa-gear"></i></div>
    <div class="todes">
-      <div class="detailfor"><span>Theme-Color:</span></div>
-      <div  class="box">
-         <input type="checkbox" onclick="togglebox()">
-         <span>
-            <i class="fa-solid fa-moon"></i>
-            <i class="fa-solid fa-sun"></i>
-         </span>
+      <div class="culoum">
+         <div class="info"><span>Dark Mode:</span></div>
+         <div class="box">
+            <div class="holder">
+               <input onclick="togglebox()" checked type="checkbox">
+               <div class="circle"></div>
+            </div>
+         </div>
       </div>
-      <div class="detailfor margin-top"><span>Display log:</span></div>
-      <div  class="box margin-top">
-         <input type="checkbox" onclick="">
-         <span>
-            <i class="fa-solid fa-xmark"></i>
-            <i class="fa-solid fa-check"></i>
-         </span>
+      <div class="culoum">
+         <div class="info"><span>DisplayLog:</span></div>
+         <div class="box">
+            <div class="holder">
+               <input onclick="visiblelog()" type="checkbox">
+               <div class="circle"></div>
+            </div>
+         </div>
       </div>
    </div>
    <div class="container-display">

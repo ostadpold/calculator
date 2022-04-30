@@ -12,12 +12,10 @@ let boxdisplay = document.querySelector('.boxdisplay');
 let myTodes = document.querySelector('.todes');
 let minecontainer = document.querySelector('.container');
 let operatorsvalue = ["/","*","-","+"]
+let myDisplayconsole = document.querySelector('.consolelog');
+let i=0;
+// console.log(myDisplayconsole);
 myDisplay.setAttribute("value","");
-let myDisplaystyle = {
-   189 : '-',
-   191:'&#247;',
-};
-
 for(let i = 0;i <4;i++){
    let operatorsvalue = ["/","*","-","+"];//for operators
    operators[i].setAttribute("value",operatorsvalue[i]);
@@ -50,7 +48,9 @@ function Numbers(event){
    myDivdisplay.classList.remove("active");
    myDivdisplay.classList.add("visible");
 
+   i++;
    console.log(mycalculation);
+   addtoconsole(mycalculation,i);
 }
 function clearDisplay(){
    mycalculation = "";
@@ -61,6 +61,8 @@ function clearDisplay(){
    myDivdisplay.classList.remove("visible");
    
    console.log(mycalculation);
+   i++;
+   addtoconsole(mycalculation,i);
 }
 function DeleteDisplay(){
    mycalculation = mycalculation.slice(0,-1);
@@ -76,6 +78,8 @@ function DeleteDisplay(){
    }
    
    console.log(mycalculation);
+   i++;
+   addtoconsole(mycalculation,i);
 }
 function percentDisplay(){
    mycalculation = mycalculation / '100' + '';
@@ -87,7 +91,10 @@ function percentDisplay(){
    seconddisplay(mycalculation);
    myDivdisplay.classList.remove("active");
    myDivdisplay.classList.add("visible");
+
    console.log(mycalculation);
+   i++;
+   addtoconsole(mycalculation,i);
 }
 function operator(event){
    let lastletter = mycalculation.charAt(mycalculation.length -1);
@@ -110,6 +117,8 @@ function operator(event){
    myDisplay.value = myDisplay.value.replace('*',decodeHtmlCharCodes('&#215;'));
    
    console.log(mycalculation);
+   i++;
+   addtoconsole(mycalculation,i);
 }
 function equals(){
    seconddisplay(mycalculation);
@@ -117,6 +126,8 @@ function equals(){
    myDivdisplay.classList.add("active");
 
    console.log(mycalculation);
+   i++;
+   addtoconsole(mycalculation,i);
 }
 function seconddisplay(key){
    mysecondDisplay.value =  "= " + eval(key);
@@ -125,4 +136,19 @@ function decodeHtmlCharCodes(str) {
    return str.replace(/(&#(\d+);)/g, function(match, capture, charCode) {
      return String.fromCharCode(charCode);
    });
+}
+function addtoconsole(str,i){
+   newElem = document.createElement('div');
+   newElem.classList.add("display");
+   newElem.innerHTML= i +": " + str;
+
+   myDisplayconsole.append(newElem);
+   myDisplayconsole.scrollBy(0,23);
+}
+function resetlog(){
+   myDisplayconsole.innerHTML = "";
+}
+function visiblelog(){
+   // mysecondDisplay.classList.add('active');
+   myDisplayconsole.classList.toggle('active');
 }

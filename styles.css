@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
 :root {
-   --orange:rgb(255, 166, 0);
+   --orange:#ffa500;
 }
 html:root
 {
@@ -8,7 +8,7 @@ html:root
    --white:rgba(255, 255, 255, 0.9);
    --whitegray:rgba(255, 255, 255, 0.65);
    --gray:rgba(128, 128, 128, 0.8);
-   --background:rgb(125, 125, 125);
+   --background:rgba(26, 26, 26, 0.8);
    /* filter:invert(1) hue-rotate(160deg); */
 }
 html.active:root
@@ -37,129 +37,126 @@ body {
    font-family: 'Jost', sans-serif;
    background-color: var(--black);
 }
+.consolelog
+{
+   max-width:400px;
+   width:clamp(100px,90%,400px);
+   height: clamp(100px,90%,300px);
+   background-color: var(--background);
+   border: 1px solid var(--whitegray);
+   border-radius: 6px;
+   overflow: auto;
+   position: relative;
+   display: none;
+}
+.consolelog.active
+{
+   display: block;
+}
+.consolelog .display
+{
+   width:100%;
+   height: auto;
+   color:var(--white);
+   font-family:  Courier, monospace;
+   font-size: 1.25em;
+}
 .todes
 {
    position: absolute;
-   top:5px;
+   top:20px;
    max-width: 400px;
-   width:100%;
+   width:clamp(200px,95%,400px);
    height: auto;
    display: flex;
-   /* justify-content: space-around; */
    align-items: center;
-   flex-direction: row;
-   flex-wrap: wrap;
+   flex-direction: column;
    visibility: hidden;
    opacity: 0;
    transition: all 400ms ease;
-   background-color: var(--gray);
+   background-color: var(--background);
    backdrop-filter: blur(4px);
    -webkit-backdrop-filter: blur(4px);
    border-radius: 4px;
-   /* border: 1px solid red; */
+   gap:16px;
 }
 .todes.active 
 {
    visibility: visible;
    opacity: 1;
 }
-.margin-top
+.todes .culoum
 {
-   margin-top: 10px;
+   width:100%;
+   height: auto;
+   display: flex;
+   flex-direction:row;
+   margin: 4px;
+   /* border: 1px solid red; */
 }
-.todes .detailfor
+.todes .culoum .info
 {
-   color:white;
-   font-size: 1.25em;
-   height: 50px;
+   /* border: 1px solid blue; */
    width:50%;
    display: flex;
+   align-items: center;
    justify-content: flex-start;
-   align-items: center;
-   /* border: 1px solid red; */
-
 }
-.todes .box
+.todes .culoum .info span
 {
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-   width: 50%;
-   height: 50px;
-   position: relative;
-   /* border: 1px solid rgb(0, 136, 255); */
-}
-.todes .box :is(input,span)
-{
+   /* border: 1px solid yellow; */
+   font-size: 1.5em;
    color:var(--white);
-   font-size: 2.75em;
 }
-.todes .box input
+.todes .culoum .box 
+{
+   width:50%;
+   /* border: 1px solid yellow; */
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   position: relative;
+}
+.todes .culoum .box .holder
+{
+   position: relative;
+   /* border: 1px solid rgb(242, 99, 99); */
+   height: 100%;
+   width:auto;
+}
+.todes .culoum .box .holder input
 {
    appearance: none;
-   -ms-progress-appearance: none;
-   -webkit-appearance: none;
-   -moz-appearance: none;
-   width: 50%;
-   background-color: var(--gray);
-   height: 50px;
+   border: 1px solid var(--white);
+   height: 100%;
+   width:75px;
+   border-radius: 50px;
    cursor: pointer;
-   border-radius: 10px;
+   transition: all 400ms ease;
+   /* background-color: var(--whitegray); */
 }
-.todes .box span
+.todes .culoum .box .holder .circle
 {
+   /* border: 1px solid white; */
    position: absolute;
-   left:51%;
-   top:2px;
+   left:0;top:0;
+   height: 35px;
+   width:35px;
+   border-radius: 50px;
    pointer-events: none;
-   transition: all 500ms ease;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   /* border: 1px solid brown; */
-   height: 50px;
-   width:25%;
+   background-color: var(--orange);
+   transition: all 400ms ease;
 }
-.todes .box span i 
+.todes .culoum .box .holder input:checked ~ .circle
 {
-   position: absolute;
-   left:0;
-   top:0;
+   left:40px;top:0;
 }
-.todes .box span i:first-child
+.todes .culoum .box .holder input:checked 
 {
-   visibility: visible;
-   opacity: 1;
-   transform: rotate();
-   transition: all 750ms ease;
+   background-color: var(--white);
 }
-.todes .box span i:last-child
+.settinglogo
 {
-   visibility: hidden;
-   opacity: 0;
-   transform: rotate();
-   transition: all 750ms ease;
-}
-.todes .box input:checked + span
-{
-   top:2px;
-   left:75%;
-}
-.todes .box input:checked + span i:first-child
-{
-   visibility: hidden;
-   opacity: 0;
-   transform: rotate(45deg);
-}
-.todes .box input:checked + span i:last-child
-{
-   visibility: visible;
-   opacity: 1;
-   transform: rotate(-45deg);
-}
-.boxdisplay 
-{
-   /* border: 1px solid red; */
    position: absolute;
    top:5px;right:5px;
    max-width:60px;
@@ -170,14 +167,14 @@ body {
    align-items: center;
    cursor: pointer;
 }
-.boxdisplay i 
+.settinglogo i 
 {
    /* border: 1px solid blue; */
    font-size: 2.5em;
    color:white;
    transition: all 200ms ease;
 }
-.boxdisplay i:hover
+.settinglogo i:hover
 {
    transform: rotate(45deg);
 }
