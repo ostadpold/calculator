@@ -9,6 +9,7 @@ html:root
    --whitegray:rgba(255, 255, 255, 0.65);
    --gray:rgba(128, 128, 128, 0.8);
    --background:rgba(26, 26, 26, 0.8);
+   --green:rgb(0, 172, 0);
    /* filter:invert(1) hue-rotate(160deg); */
 }
 html.active:root
@@ -60,6 +61,10 @@ body {
    color:var(--white);
    font-family:  Courier, monospace;
    font-size: 1.25em;
+}
+.consolelog .display span 
+{
+   color:var(--green);
 }
 .todes
 {
@@ -154,6 +159,28 @@ body {
 .todes .culoum .box .holder input:checked 
 {
    background-color: var(--white);
+}
+.todes .culoum button
+{
+   width:100%;
+   padding:14px 12px;
+   font-size: 1.25em;
+   color:var(--orange);
+   border: 2px solid var(--orange);
+   border-radius: 4px;
+   background-color: transparent;
+   cursor:pointer;
+   transition: all 200ms ease;
+   display: none;
+}
+.todes .culoum button.active
+{
+   display: block;
+}
+.todes .culoum button:hover
+{
+   color:var(--white);
+   border-color: var(--white);
 }
 .settinglogo
 {

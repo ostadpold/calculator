@@ -13,7 +13,8 @@ let myTodes = document.querySelector('.todes');
 let minecontainer = document.querySelector('.container');
 let operatorsvalue = ["/","*","-","+"]
 let myDisplayconsole = document.querySelector('.consolelog');
-let i=0;
+let x=0;
+let mybutton = document.querySelector('.culoum button');
 // console.log(myDisplayconsole);
 myDisplay.setAttribute("value","");
 for(let i = 0;i <4;i++){
@@ -48,9 +49,9 @@ function Numbers(event){
    myDivdisplay.classList.remove("active");
    myDivdisplay.classList.add("visible");
 
-   i++;
+   x++;
    console.log(mycalculation);
-   addtoconsole(mycalculation,i);
+   addtoconsole(mycalculation,x);
 }
 function clearDisplay(){
    mycalculation = "";
@@ -61,8 +62,8 @@ function clearDisplay(){
    myDivdisplay.classList.remove("visible");
    
    console.log(mycalculation);
-   i++;
-   addtoconsole(mycalculation,i);
+   x++;
+   addtoconsole(mycalculation,x);
 }
 function DeleteDisplay(){
    mycalculation = mycalculation.slice(0,-1);
@@ -78,8 +79,8 @@ function DeleteDisplay(){
    }
    
    console.log(mycalculation);
-   i++;
-   addtoconsole(mycalculation,i);
+   x++;
+   addtoconsole(mycalculation,x);
 }
 function percentDisplay(){
    mycalculation = mycalculation / '100' + '';
@@ -93,32 +94,36 @@ function percentDisplay(){
    myDivdisplay.classList.add("visible");
 
    console.log(mycalculation);
-   i++;
-   addtoconsole(mycalculation,i);
+   x++;
+   addtoconsole(mycalculation,x);
 }
 function operator(event){
    let lastletter = mycalculation.charAt(mycalculation.length -1);
    let lastletterDisplay = myDisplay.value.charAt(myDisplay.value.length -1);
-   myDivdisplay.classList.remove("active");
-
+  
+  
    for(let i = 0;i <4; i++){
-         if(lastletter == operatorsvalue[i]){
+         if(lastletter == operatorsvalue[i]){//* / + -
             mycalculation =  mycalculation.replace(lastletter,event.target.value);
             myDisplay.value = myDisplay.value.replace(lastletterDisplay,event.target.value);
             myDisplay.value = myDisplay.value.replace('/',decodeHtmlCharCodes('&#247;'));
              myDisplay.value = myDisplay.value.replace('*',decodeHtmlCharCodes('&#215;'));
-            return;
+             console.log('condition is true');
+             return;
          }
-     
       }
-   mycalculation += event.target.value;
-   myDisplay.value = mycalculation;
-   myDisplay.value = myDisplay.value.replace('/',decodeHtmlCharCodes('&#247;'));
-   myDisplay.value = myDisplay.value.replace('*',decodeHtmlCharCodes('&#215;'));
-   
+      console.log('condition is false');
+      mycalculation += event.target.value;
+      myDisplay.value = mycalculation;
+      for(let i = 0;i < mycalculation.length;i++){
+         myDisplay.value = myDisplay.value.replace('/',decodeHtmlCharCodes('&#247;'));
+         myDisplay.value = myDisplay.value.replace('*',decodeHtmlCharCodes('&#215;'));
+      }
+
+   myDivdisplay.classList.remove("active");
    console.log(mycalculation);
-   i++;
-   addtoconsole(mycalculation,i);
+   x++;
+   addtoconsole(mycalculation,x);
 }
 function equals(){
    seconddisplay(mycalculation);
@@ -126,8 +131,8 @@ function equals(){
    myDivdisplay.classList.add("active");
 
    console.log(mycalculation);
-   i++;
-   addtoconsole(mycalculation,i);
+   x++;
+   addtoconsole(mycalculation,x);
 }
 function seconddisplay(key){
    mysecondDisplay.value =  "= " + eval(key);
@@ -140,7 +145,7 @@ function decodeHtmlCharCodes(str) {
 function addtoconsole(str,i){
    newElem = document.createElement('div');
    newElem.classList.add("display");
-   newElem.innerHTML= i +": " + str;
+   newElem.innerHTML= "<span>" + i + ": "+"</span>" + str;
 
    myDisplayconsole.append(newElem);
    myDisplayconsole.scrollBy(0,23);
@@ -151,4 +156,8 @@ function resetlog(){
 function visiblelog(){
    // mysecondDisplay.classList.add('active');
    myDisplayconsole.classList.toggle('active');
+   mybutton.classList.toggle('active');
+}
+function clearlog(){
+   myDisplayconsole.innerHTML = "";
 }
