@@ -42,11 +42,13 @@ body {
 {
    max-width:400px;
    width:clamp(100px,90%,400px);
-   height: clamp(100px,90%,300px);
+   height: clamp(100px,100%,200px);
    background-color: var(--background);
    border: 1px solid var(--whitegray);
    border-radius: 6px;
-   overflow: auto;
+   overflow-y: auto;
+   overflow-x: hidden;
+   text-orientation:sideways;
    position: relative;
    display: none;
 }
@@ -62,6 +64,10 @@ body {
    font-family:  Courier, monospace;
    font-size: 1.25em;
 }
+.consolelog .equal 
+{
+   color:var(--orange);
+}
 .consolelog .display span 
 {
    color:var(--green);
@@ -69,7 +75,7 @@ body {
 .todes
 {
    position: absolute;
-   top:20px;
+   top:60px;
    max-width: 400px;
    width:clamp(200px,95%,400px);
    height: auto;
@@ -193,6 +199,11 @@ body {
    justify-content: center;
    align-items: center;
    cursor: pointer;
+}
+.settinglogo.active i 
+{
+   color:var(--orange);
+   transform: rotate(45deg);
 }
 .settinglogo i 
 {
@@ -396,5 +407,15 @@ body {
    .hidden-arguments .line
    {
       margin-bottom: 20px;
+   }
+}
+@media screen and (max-height:600px) and (min-width:750px){
+   .consolelog
+   {
+      /* transform:translate(420px,200px); */
+      height: clamp(200px,100%,420px);
+      width:clamp(100px,20%,400px);
+      position: absolute;
+      top:150px;right:10px;
    }
 }

@@ -15,6 +15,7 @@ let operatorsvalue = ["/","*","-","+"]
 let myDisplayconsole = document.querySelector('.consolelog');
 let x=0;
 let mybutton = document.querySelector('.culoum button');
+let mybutton2 = document.querySelector('.settinglogo');
 // console.log(myDisplayconsole);
 myDisplay.setAttribute("value","");
 for(let i = 0;i <4;i++){
@@ -27,11 +28,13 @@ for(let i = 0;i <= 10;i++){//for numbers value
 }
 function clickedtoggle() {
    myTodes.classList.toggle("active");
+   mybutton2.classList.toggle('active');
    setTimeout(function(){
       minecontainer.addEventListener('click', function(){
          myTodes.classList.remove("active");
+         mybutton2.classList.remove('active');
       })
-   },2000);
+   },1000);
 }
 function togglehiddenline(){
    myHiddenline.classList.toggle("active");
@@ -132,7 +135,8 @@ function equals(){
 
    console.log(mycalculation);
    x++;
-   addtoconsole(mycalculation,x);
+   let y = 1;
+   addtoconsole(mycalculation,x,y);
 }
 function seconddisplay(key){
    mysecondDisplay.value =  "= " + eval(key);
@@ -142,13 +146,18 @@ function decodeHtmlCharCodes(str) {
      return String.fromCharCode(charCode);
    });
 }
-function addtoconsole(str,i){
+function addtoconsole(str,i,y = 0){
    newElem = document.createElement('div');
+   if(y !== 0){
+      newElem.classList.add('equal');
+      newElem.innerHTML="<span>" + i + ": "+"</span>" + str;
+   }
    newElem.classList.add("display");
    newElem.innerHTML= "<span>" + i + ": "+"</span>" + str;
+ 
 
    myDisplayconsole.append(newElem);
-   myDisplayconsole.scrollBy(0,23);
+   myDisplayconsole.scrollBy(0,46);
 }
 function resetlog(){
    myDisplayconsole.innerHTML = "";
@@ -160,4 +169,5 @@ function visiblelog(){
 }
 function clearlog(){
    myDisplayconsole.innerHTML = "";
+   x = 0;
 }
